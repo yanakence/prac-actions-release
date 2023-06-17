@@ -21,22 +21,22 @@ jobs:
           go-version: "1.20"
 
       - name: Go build for windows amd64
-        run: (cd api && GOOS=windows GOARCH=amd64 go build -v -o app_windows_amd64.exe ./...)
+        run: (cd api && GOOS=windows GOARCH=amd64 go build -v -o app_windows_amd64.exe ./main.go)
 
       - name: Go build for windows arm
-        run: (cd api && GOOS=windows GOARCH=arm go build -v -o app_windows_arm.exe ./...)
+        run: (cd api && GOOS=windows GOARCH=arm go build -v -o app_windows_arm.exe ./main.go)
 
       - name: Go build for darwin amd64
-        run: (cd api && GOOS=darwin GOARCH=amd64 go build -v -o app_darwin_amd64 ./...)
+        run: (cd api && GOOS=darwin GOARCH=amd64 go build -v -o app_darwin_amd64 ./main.go)
 
       - name: Go build for darwin arm64
-        run: (cd api && GOOS=darwin GOARCH=arm64 go build -v -o app_darwin_arm64 ./...)
+        run: (cd api && GOOS=darwin GOARCH=arm64 go build -v -o app_darwin_arm64 ./main.go)
 
       - name: Go build for linux amd64
-        run: (cd api && GOOS=linux GOARCH=amd64 go build -v -o app_linux_amd64 ./...)
+        run: (cd api && GOOS=linux GOARCH=amd64 go build -v -o app_linux_amd64 ./main.go)
 
       - name: Go build for linux arm64
-        run: (cd api && GOOS=linux GOARCH=arm64 go build -v -o app_linux_arm64 ./...)
+        run: (cd api && GOOS=linux GOARCH=arm64 go build -v -o app_linux_arm64 ./main.go)
 
       - name: Setup Node
         uses: actions/setup-node@v3
