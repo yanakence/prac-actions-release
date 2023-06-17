@@ -52,7 +52,7 @@ jobs:
         run: (cd ui && yarn build)
 
       - name: Compress ui
-        run: (cd ui && tar -zcvf ui.tar.gz ./dist/)
+        run: (cd ui/dist && tar -zcvf ../front.tar.gz .)
 
       - name: Create release
         uses: softprops/action-gh-release@v1
@@ -67,4 +67,4 @@ jobs:
             api/app_darwin_arm64
             api/app_linux_amd64
             api/app_linux_arm64
-            ui/ui.tar.gz
+            ui/front.tar.gz
