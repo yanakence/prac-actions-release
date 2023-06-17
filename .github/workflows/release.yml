@@ -18,8 +18,23 @@ jobs:
         with:
           go-version: "1.20"
 
-      - name: Go build
-        run: (cd api && go build -v -o app ./...)
+      - name: Go build for windows amd64
+        run: (cd api && GOOS=windows GOARCH=amd64 go build -v -o app_windows_amd64.exe ./...)
+
+      - name: Go build for windows arm
+        run: (cd api && GOOS=windows GOARCH=arm go build -v -o app_windows_arm.exe ./...)
+
+      - name: Go build for darwin amd64
+        run: (cd api && GOOS=darwin GOARCH=amd64 go build -v -o app_darwin_amd64 ./...)
+
+      - name: Go build for darwin arm64
+        run: (cd api && GOOS=darwin GOARCH=arm64 go build -v -o app_darwin_arm64 ./...)
+
+      - name: Go build for linux amd64
+        run: (cd api && GOOS=linux GOARCH=amd64 go build -v -o app_linux_amd64 ./...)
+
+      - name: Go build for linux arm64
+        run: (cd api && GOOS=linux GOARCH=arm64 go build -v -o app_linux_arm64 ./...)
 
       - name: Setup Node
         uses: actions/setup-node@v3
@@ -37,20 +52,17 @@ jobs:
       - name: Compress ui
         run: (cd ui && tar -zcvf ui.tar.gz ./dist/)
 
-      - name: Create release note
-        id: create_release_note
-        uses: release-drafter/release-drafter@v5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          publish: false
-          prerelease: false
-
       - name: Create release
         uses: softprops/action-gh-release@v1
         with:
-          body: ${{ steps.create_release_note.outputs.body }}
+          generate_release_notes: true
+          draft: false
+          prerelease: false
           files: |
-            api/app
+            api/app_windows_amd64.exe
+            api/app_windows_arm.exe
+            api/app_darwin_amd64
+            api/app_darwin_arm64
+            api/app_linux_amd64
+            api/app_linux_arm64
             ui/ui.tar.gz
-          token: ${{ secrets.GITHUB_TOKEN }}
