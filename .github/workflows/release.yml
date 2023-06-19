@@ -59,7 +59,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
-
+      # Actionsのパッケージでいい感じにやるなら...
       # - name: Create release
       #   uses: softprops/action-gh-release@v1
       #   with:
