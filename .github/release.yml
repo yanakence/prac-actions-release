@@ -1,18 +1,23 @@
 changelog:
   categories:
-    - title: Features
+    - title: 🎉 Features
       labels:
-        - feature
-    - title: Changes
+        - features
+    - title: 🛠️ Changes
       labels:
         - changes
-    - title: Fixes
+    - title: 🐛 Bug Fixes
       labels:
-        - fix
         - bugfix
-    - title: Refactoring
+    - title: ⚡ Refactoring
       labels:
         - refactoring
-    - title: Other Changes
+    - title: 📦 Dependencies
+      labels:
+        - dependencies
+    - title: 📖 Documents
+      labels:
+        - documents
+    - title: 👀 Other Changes
       labels:
         - "*"
